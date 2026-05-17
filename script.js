@@ -102,14 +102,13 @@ const questions = [
 
 let currentStage = 0;
 let keysCollected = 0;
+let bubbleTimeout;
 
 const synth = window.speechSynthesis;
 let preferredVoice = null;
 
-// Função para buscar a melhor voz nativa possível
 function loadVoices() {
     const voices = synth.getVoices();
-    // Filtra vozes em Português do Brasil
     const ptVoices = voices.filter(v => v.lang === 'pt-BR' || v.lang === 'pt_BR');
     
     if (ptVoices.length > 0) {
@@ -119,7 +118,6 @@ function loadVoices() {
             let score = 0;
             const name = v.name.toLowerCase();
             
-            // Prioriza vozes "Premium", "Natural" ou "Online" que os navegadores/sistemas operacionais oferecem
             if (name.includes('online') || name.includes('cloud')) score += 10;
             if (name.includes('google')) score += 8;
             if (name.includes('natural')) score += 8;
@@ -133,22 +131,18 @@ function loadVoices() {
             }
         });
         
-        // Se não achou nenhuma com pontuação alta, pega a primeira disponível
         if (!preferredVoice) {
             preferredVoice = ptVoices[0];
         }
     }
 }
 
-// Carrega as vozes imediatamente e também aguarda o evento do navegador
 loadVoices();
 if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = loadVoices;
 }
 
-// Função de fala nativa otimizada e sem delay
 function speak(text) {
-    // Cancela qualquer fala anterior imediatamente
     if (synth.speaking) {
         synth.cancel();
     }
@@ -160,9 +154,8 @@ function speak(text) {
         utterance.voice = preferredVoice;
     }
 
-    // Ajustes para deixar a voz nativa menos robótica e mais amigável
-    utterance.pitch = 1.2; // Tom levemente mais agudo para a coruja
-    utterance.rate = 1.05; // Velocidade levemente mais rápida para dar naturalidade
+    utterance.pitch = 1.2;
+    utterance.rate = 1.05;
 
     const elements = document.querySelectorAll('.owl-character, .owl-avatar');
 
@@ -172,17 +165,20 @@ function speak(text) {
     
     utterance.onend = () => {
         elements.forEach(el => el.classList.remove('talking'));
+        clearTimeout(bubbleTimeout);
+        bubbleTimeout = setTimeout(() => {
+            const bubble = document.getElementById('owl-bubble');
+            if (bubble) bubble.classList.add('hidden');
+        }, 3000);
     };
     
     utterance.onerror = () => {
         elements.forEach(el => el.classList.remove('talking'));
     };
 
-    // Executa a fala nativa (delay zero)
     synth.speak(utterance);
 }
 
-// Expose functions to window so they can be called from HTML onclick attributes
 window.playIntroAudio = function() {
     speak("Olá! Eu sou a Coruja Pedagógica, sua guia nesta jornada. Vamos abrir a Porta do Conhecimento da Educação Profissional e Tecnológica, a EPT! A EPT busca formar cidadãos completos, unindo o trabalho e a vida em sociedade. Como disse Paulo Freire: Educação não transforma o mundo. Educação muda as pessoas. Pessoas transformam o mundo.");
 };
@@ -248,7 +244,6 @@ function loadQuestion() {
     
     optionsContainer.innerHTML = '';
     
-    // Reset visibility: show explanation, hide options
     optionsContainer.classList.add('hidden');
     explanationContainer.classList.remove('hidden');
 
@@ -271,9 +266,6 @@ window.showOptions = function() {
     optionsContainer.classList.remove('hidden');
     
     showOwlMessage("Vamos lá! Escolha a resposta certa.");
-    
-    // Optional: read the options automatically when revealed
-    // window.playOptionsAudio();
 };
 
 window.selectOption = function(option, btnElement) {
@@ -314,6 +306,11 @@ function showOwlMessage(msg) {
     const bubble = document.getElementById('owl-bubble');
     bubble.innerText = msg;
     bubble.classList.remove('hidden');
+
+    clearTimeout(bubbleTimeout);
+    bubbleTimeout = setTimeout(() => {
+        bubble.classList.add('hidden');
+    }, 6000);
 }
 
 function endGame() {
