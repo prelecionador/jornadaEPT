@@ -4,31 +4,31 @@ const questions = [
         explanation: "A Educação Profissional e Tecnológica (EPT) não se resume a ensinar uma profissão. Ela visa preparar o cidadão para a vida, integrando o conhecimento técnico à formação humana e cultural.",
         options: [
             { id: 'a', text: "Integrar a formação para o trabalho com a formação cidadã.", isCorrect: true, feedback: "Exatamente! A EPT busca a formação integral do sujeito." },
-            { id: 'b', text: "Focar apenas no treinamento técnico para indústrias.", isCorrect: false, feedback: "A EPT vai muito além do técnico, focando na formação integral e cidadã." },
-            { id: 'c', text: "Preparar estudantes exclusivamente para o vestibular.", isCorrect: false, feedback: "O foco não é apenas acadêmico, mas a integração com o mundo do trabalho." },
-            { id: 'd', text: "Substituir o ensino médio regular por cursos rápidos.", isCorrect: false, feedback: "A EPT pode ser integrada ao ensino médio, não apenas substituí-lo." },
-            { id: 'e', text: "Oferecer apenas cursos de pós-graduação.", isCorrect: false, feedback: "A EPT abrange desde cursos de qualificação básica até a pós-graduação." }
+            { id: 'b', text: "Focar no treinamento técnico para indústrias e mercado de trabalho.", isCorrect: false, feedback: "A EPT vai muito além do técnico, focando na formação integral e cidadã." },
+            { id: 'c', text: "Preparar estudantes para o enem.", isCorrect: false, feedback: "O foco não é apenas acadêmico, mas a integração com o mundo do trabalho." },
+            { id: 'd', text: "Substituir o ensino médio regular por cursos técnicos.", isCorrect: false, feedback: "A EPT pode ser integrada ao ensino médio, não apenas substituí-lo." },
+            { id: 'e', text: "Oferecer cursos de pós-graduação.", isCorrect: false, feedback: "A EPT abrange desde cursos de qualificação básica até a pós-graduação." }
         ]
     },
     {
         question: "Segundo Paulo Freire, a educação deve ser:",
         explanation: "Paulo Freire, um dos maiores educadores do Brasil, defendia que a educação não é neutra. Para ele, aprender a ler e escrever é também aprender a ler o mundo de forma crítica.",
         options: [
-            { id: 'a', text: "Um processo de transferência de conhecimento.", isCorrect: false, feedback: "Freire criticava a 'educação bancária' de mera transferência." },
+            { id: 'a', text: "Promover a formação crítica do indivíduo a partir da realidade social.", isCorrect: false, feedback: "A formação crítica é essencial em Freire, mas sua proposta também enfatiza a transformação social por meio da educação." },
             { id: 'b', text: "Uma prática de liberdade e transformação social.", isCorrect: true, feedback: "Correto! A educação é um ato político e transformador." },
-            { id: 'c', text: "Focada na memorização de conteúdos.", isCorrect: false, feedback: "A memorização mecânica não promove o pensamento crítico." },
-            { id: 'd', text: "Desvinculada da realidade do aluno.", isCorrect: false, feedback: "A educação deve sempre partir da realidade e do contexto do educando." },
-            { id: 'e', text: "Um privilégio para poucos.", isCorrect: false, feedback: "A educação é um direito fundamental de todos." }
+            { id: 'c', text: "Estimular o diálogo entre educador e educando na construção do conhecimento.", isCorrect: false, feedback: "O diálogo é um elemento central na pedagogia freireana, porém a questão busca a concepção mais ampla de educação defendida por Freire." },
+            { id: 'd', text: "Relacionar o aprendizado às experiências culturais e sociais do educando.", isCorrect: false, feedback: "Freire valorizava o contexto do educando, mas a alternativa correta destaca a educação como prática libertadora." },
+            { id: 'e', text: "Contribuir para a conscientização e participação ativa na sociedade.", isCorrect: false, feedback: "A conscientização faz parte da proposta freireana, porém ela está inserida em uma perspectiva maior de liberdade e transformação social." }
         ]
     },
     {
         question: "O que significa 'Omnilateralidade' no contexto da EPT?",
         explanation: "O termo 'omnilateralidade' vem do latim 'omni' (tudo/todos) e 'latus' (lado). Na educação, refere-se ao desenvolvimento completo de todas as potencialidades do ser humano.",
         options: [
-            { id: 'a', text: "Focar em apenas uma habilidade técnica.", isCorrect: false, feedback: "Isso seria unilateralidade, o oposto do que buscamos." },
-            { id: 'b', text: "Estudar apenas disciplinas de exatas.", isCorrect: false, feedback: "A formação deve ser completa, englobando todas as áreas." },
-            { id: 'c', text: "Separar o trabalho manual do trabalho intelectual.", isCorrect: false, feedback: "A omnilateralidade busca exatamente superar essa divisão histórica." },
-            { id: 'd', text: "Priorizar o lucro das empresas.", isCorrect: false, feedback: "O foco central é o desenvolvimento humano e social." },
+            { id: 'a', text: "Integrar conhecimentos científicos, culturais e profissionais na formação do estudante.", isCorrect: false, feedback: "A integração de conhecimentos é importante, mas a omnilateralidade envolve o desenvolvimento humano em todas as dimensões." },
+            { id: 'b', text: "Promover uma educação voltada para diferentes áreas do conhecimento e da sociedade.", isCorrect: false, feedback: "A diversidade de áreas faz parte da proposta, porém o conceito é mais amplo e ligado à formação integral." },
+            { id: 'c', text: "Articular teoria e prática na construção de uma formação crítica e social.", isCorrect: false, feedback: "A articulação entre teoria e prática é essencial na EPT, mas não define completamente a omnilateralidade." },
+            { id: 'd', text: "Valorizar diferentes formas de conhecimento no processo educativo e profissional.", isCorrect: false, feedback: "A valorização dos diferentes saberes é importante, mas a omnilateralidade refere-se ao desenvolvimento integral do ser humano." },
             { id: 'e', text: "A formação integral do ser humano em todas as suas dimensões.", isCorrect: true, feedback: "Perfeito! É a formação intelectual, física, cultural e política." }
         ]
     },
@@ -36,11 +36,11 @@ const questions = [
         question: "Qual instituição é uma das principais provedoras de EPT no Brasil?",
         explanation: "A Rede Federal de Educação Profissional, Científica e Tecnológica tem mais de um século de história, evoluindo das antigas Escolas de Aprendizes Artífices até os atuais modelos de excelência.",
         options: [
-            { id: 'a', text: "Apenas escolas particulares.", isCorrect: false, feedback: "A rede pública tem um papel fundamental e histórico na EPT." },
-            { id: 'b', text: "Somente universidades federais.", isCorrect: false, feedback: "As universidades oferecem, mas não são as únicas nem as principais exclusivas." },
-            { id: 'c', text: "Os Institutos Federais de Educação, Ciência e Tecnologia (IFs).", isCorrect: true, feedback: "Isso mesmo! Os IFs são referência na oferta de EPT no país." },
-            { id: 'd', text: "Apenas ONGs.", isCorrect: false, feedback: "ONGs participam, mas a rede federal e estadual são as principais." },
-            { id: 'e', text: "Escolas de ensino fundamental exclusivamente.", isCorrect: false, feedback: "A EPT foca principalmente no ensino médio e superior." }
+            { id: 'a', text: "Escolas particulares.", isCorrect: false, feedback: "A rede pública tem um papel fundamental e histórico na EPT." },
+            { id: 'b', text: "Universidades federais.", isCorrect: false, feedback: "As universidades oferecem, mas não são as únicas nem as principais exclusivas." },
+            { id: 'c', text: "Os Institutos Federais.", isCorrect: false, feedback: "No inicio os IFs foram referência na oferta de EPT, hoje todo o Brasil fala sobre EPT." },
+            { id: 'd', text: "Escolas de ensino fundamental.", isCorrect: false, feedback: "ONGs participam, mas a rede federal e estadual são as principais." },
+            { id: 'e', text: "Todas as alternativas estão corretas.", isCorrect: true, feedback: "Isso mesmo! o EPT vai de ensino básico até pós-graduação" }
         ]
     },
     {
@@ -59,43 +59,43 @@ const questions = [
         explanation: "Na EPT, o aluno não fica apenas na sala de aula. Ele é incentivado a pesquisar soluções para problemas reais e a levar esse conhecimento para a comunidade através da extensão.",
         options: [
             { id: 'a', text: "Conectar o conhecimento acadêmico com as necessidades da comunidade.", isCorrect: true, feedback: "Exato! A indissociabilidade entre ensino, pesquisa e extensão é pilar da EPT." },
-            { id: 'b', text: "Apenas publicar artigos científicos.", isCorrect: false, feedback: "A extensão exige impacto real e diálogo com a comunidade." },
-            { id: 'c', text: "Dificultar a formação do aluno.", isCorrect: false, feedback: "Pelo contrário, enriquece e dá sentido prático à formação." },
-            { id: 'd', text: "Substituir as aulas teóricas.", isCorrect: false, feedback: "Elas são complementares, unindo teoria e prática." },
-            { id: 'e', text: "Focar apenas em teorias abstratas.", isCorrect: false, feedback: "A EPT foca na aplicação prática, tecnológica e social do conhecimento." }
+            { id: 'b', text: "Publicar artigos científicos por meio de estudo detalhado.", isCorrect: false, feedback: "A extensão exige impacto real e diálogo com a comunidade." },
+            { id: 'c', text: "Facilitar o conhecimento teorico de bases normativas tecnicas da educação.", isCorrect: false, feedback: "Pelo contrário, enriquece e dá sentido prático à formação." },
+            { id: 'd', text: "Promover projetos que integrem teoria, prática e transformação social.", isCorrect: false, feedback: "Embora projetos sejam importantes, o principal papel é aproximar o conhecimento acadêmico das demandas da sociedade." },
+            { id: 'e', text: "Estimular a produção de conhecimento voltada para problemas do cotidiano.", isCorrect: false, feedback: "A pesquisa na EPT realmente busca resolver problemas reais, mas também precisa estar articulada com a extensão e a formação cidadã." }
         ]
     },
     {
         question: "O que é o conceito de 'Trabalho como Princípio Educativo'?",
         explanation: "O trabalho aqui não é visto apenas como emprego ou exploração, mas como a ação humana fundamental que transforma a natureza e a própria sociedade.",
         options: [
-            { id: 'a', text: "Trabalhar desde a infância.", isCorrect: false, feedback: "O trabalho infantil é ilegal. O conceito é sobre a compreensão do trabalho." },
-            { id: 'b', text: "Estudar apenas para conseguir um emprego.", isCorrect: false, feedback: "A educação vai além da mera empregabilidade." },
-            { id: 'c', text: "Fazer trabalhos manuais na escola.", isCorrect: false, feedback: "É um conceito filosófico mais profundo que apenas atividades manuais." },
+            { id: 'a', text: "Entender o trabalho como elemento importante para a formação crítica e social do indivíduo.", isCorrect: false, feedback: "A formação crítica faz parte do conceito, mas o princípio educativo envolve compreender o trabalho como atividade humana transformadora." },
+            { id: 'b', text: "Relacionar a educação com a preparação para atuar de forma consciente na sociedade.", isCorrect: false, feedback: "A educação possui esse papel, porém o conceito também enfatiza o trabalho como fundamento da existência humana." },
+            { id: 'c', text: "Valorizar práticas educativas que integrem conhecimento técnico, científico e social.", isCorrect: false, feedback: "Essa integração é importante na EPT, mas não define completamente o conceito de trabalho como princípio educativo." },
             { id: 'd', text: "Compreender o trabalho como a forma pela qual o ser humano transforma o mundo e a si mesmo.", isCorrect: true, feedback: "Perfeito! É entender o trabalho em sua dimensão ontológica." },
-            { id: 'e', text: "Ignorar a teoria e focar só na prática.", isCorrect: false, feedback: "A práxis une indissociavelmente a teoria e a prática." }
+            { id: 'e', text: "Promover a articulação entre teoria e prática na construção do conhecimento.", isCorrect: false, feedback: "A articulação entre teoria e prática é essencial, mas o conceito vai além disso ao compreender o trabalho como essência da formação humana." }
         ]
     },
     {
         question: "Na EPT, qual é a importância da tecnologia?",
         explanation: "Vivemos em um mundo digital, mas a EPT nos ensina a não sermos apenas consumidores passivos de tecnologia, mas sim criadores e pensadores críticos sobre o seu uso e impacto.",
         options: [
-            { id: 'a', text: "Substituir os professores por máquinas.", isCorrect: false, feedback: "A tecnologia é uma ferramenta de apoio, não um substituto para a mediação humana." },
+            { id: 'a', text: "Utilizar a tecnologia de forma consciente para resolver problemas sociais e profissionais.", isCorrect: false, feedback: "A tecnologia pode contribuir para resolver problemas, mas a EPT também enfatiza a análise crítica de seus impactos." },
             { id: 'b', text: "Ser compreendida criticamente, não apenas consumida.", isCorrect: true, feedback: "Correto! Devemos entender como a tecnologia afeta a sociedade e o trabalho." },
-            { id: 'c', text: "Usar apenas as ferramentas mais caras.", isCorrect: false, feedback: "A tecnologia deve ser acessível e adequada ao contexto social." },
-            { id: 'd', text: "Focar apenas em redes sociais.", isCorrect: false, feedback: "A tecnologia abrange processos produtivos, ferramentas, ciências e saberes." },
-            { id: 'e', text: "Ignorar os impactos ambientais.", isCorrect: false, feedback: "A EPT promove o uso sustentável e consciente da tecnologia." }
+            { id: 'c', text: "Promover inovação articulada com conhecimento científico e formação humana.", isCorrect: false, feedback: "A inovação é importante, porém a questão central está na compreensão crítica da tecnologia." },
+            { id: 'd', text: "Integrar recursos tecnológicos aos processos educativos e produtivos da sociedade.", isCorrect: false, feedback: "A integração tecnológica faz parte da EPT, mas o foco principal é desenvolver uma visão crítica sobre seu uso." },
+            { id: 'e', text: "Estimular o desenvolvimento de soluções tecnológicas voltadas às necessidades coletivas.", isCorrect: false, feedback: "Esse também é um objetivo importante, porém a EPT destaca principalmente a compreensão crítica da tecnologia." }
         ]
     },
     {
         question: "O que acontece quando você destranca a 'Porta do Conhecimento da EPT'?",
         explanation: "O conhecimento adquirido na EPT é uma ferramenta poderosa. Ele não serve apenas para o sucesso individual, mas para a melhoria coletiva e social.",
         options: [
-            { id: 'a', text: "Você ganha um prêmio em dinheiro.", isCorrect: false, feedback: "O verdadeiro prêmio é o conhecimento e a capacidade de transformação." },
-            { id: 'b', text: "O jogo reinicia infinitamente.", isCorrect: false, feedback: "Há um objetivo maior na sua jornada educacional." },
+            { id: 'a', text: "Você amplia sua capacidade de atuar de forma crítica e unilatel na sociedade.", isCorrect: false, feedback: "A formação crítica é importante, mas a principal ideia é tornar-se agente de transformação social." },
+            { id: 'b', text: "Você desenvolve conhecimentos para contribuir com o mundo do trabalho.", isCorrect: false, feedback: "Essa contribuição faz parte da EPT, porém a alternativa correta enfatiza a transformação social gerada pelo conhecimento." },
             { id: 'c', text: "Você se torna um agente de transformação na sua comunidade e no mundo do trabalho.", isCorrect: true, feedback: "Parabéns! Esse é o verdadeiro objetivo da Educação Profissional e Tecnológica." },
-            { id: 'd', text: "Você esquece tudo o que aprendeu.", isCorrect: false, feedback: "O conhecimento é para ser levado e aplicado por toda a vida." },
-            { id: 'e', text: "Você para de estudar.", isCorrect: false, feedback: "A educação é um processo contínuo ao longo de toda a vida." }
+            { id: 'd', text: "Você passa a compreender a importância da integração entre ciência, cultura e tecnologia.", isCorrect: false, feedback: "Essa integração é fundamental na EPT, mas o foco da questão está na atuação transformadora do sujeito." },
+            { id: 'e', text: "Você fortalece sua formação humana e cultural para enfrentar desafios sociais.", isCorrect: false, feedback: "A formação humana é essencial, porém o objetivo central destacado é a transformação da realidade social." }
         ]
     }
 ];
@@ -169,7 +169,7 @@ function speak(text) {
         bubbleTimeout = setTimeout(() => {
             const bubble = document.getElementById('owl-bubble');
             if (bubble) bubble.classList.add('hidden');
-        }, 3000);
+        }, 8000);
     };
     
     utterance.onerror = () => {
@@ -298,7 +298,7 @@ window.selectOption = function(option, btnElement) {
                 b.classList.remove('wrong');
             });
             showOwlMessage("Tente novamente!");
-        }, 4000);
+        }, 8000);
     }
 };
 
