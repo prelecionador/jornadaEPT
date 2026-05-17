@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jornada da EPT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <!-- Scenery Background -->
+    <div class="scenery">
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+      <div class="ground"></div>
+    </div>
+
+    <!-- Top Bar for Keys -->
+    <div class="top-bar hidden" id="top-bar">
+      <div class="keys-counter">Chaves: <span id="keys-count">0</span> / 9</div>
+      <div class="keys-visual" id="keys-visual"></div>
+    </div>
+
+    <div id="app">
+      <!-- Intro Screen -->
+      <section id="intro-screen" class="screen active">
+        <h1 class="title-blue">BEM-VINDO!</h1>
+        <div class="intro-text-container">
+          <p>Chegamos à jornada do conhecimento da <strong>Educação Profissional e Tecnológica (EPT)</strong>.</p>
+          <p>Eu sou a <strong>Coruja Pedagógica</strong>!</p>
+          <p>Vamos caminhar juntos para destrancar a Porta do Conhecimento.</p>
+          <blockquote class="quote">
+            "Educação não transforma o mundo. Educação muda as pessoas. Pessoas transformam o mundo."<br>
+            <span>- Paulo Freire</span>
+          </blockquote>
+        </div>
+        <div class="controls">
+          <button onclick="startGame()" class="btn-primary">Começar a Jornada</button>
+          <button onclick="playIntroAudio()" class="btn-audio" aria-label="Ouvir introdução">🔊 Ouvir Introdução</button>
+        </div>
+      </section>
+
+      <!-- Game Screen -->
+      <section id="game-screen" class="screen hidden">
+        <div class="game-layout">
+          <div class="left-panel">
+            <div class="question-header">
+              <h2 id="question-text">Pergunta aqui</h2>
+              <button onclick="playQuestionAudio()" class="btn-icon" aria-label="Ouvir pergunta">🔊</button>
+            </div>
+            <button onclick="playOptionsAudio()" class="btn-audio-small" aria-label="Ouvir opções">🔊 Ouvir Opções</button>
+          </div>
+          <div class="right-panel">
+            <div class="board">
+              <h3 class="board-title">AVALIAÇÃO</h3>
+              
+              <!-- Explanation Container -->
+              <div id="explanation-container" class="explanation-container">
+                <p id="explanation-text">Texto de explicação aqui...</p>
+                <button onclick="showOptions()" class="btn-resolve">Resolver Questão</button>
+              </div>
+
+              <!-- Options Container -->
+              <div id="options-container" class="options-container hidden">
+                <!-- Options generated via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- End Screen -->
+      <section id="end-screen" class="screen hidden">
+        <h1 class="title-blue">VALEU DEMAIS!</h1>
+        <div class="end-text-container">
+          <p id="end-text">Parabéns por ter chegado ao fim da nossa jornada!</p>
+          <p>Você destrancou a Porta do Conhecimento da EPT.</p>
+        </div>
+        <div class="door-container">
+          <div class="door unlocked">🚪✨</div>
+        </div>
+        <div class="controls">
+          <button onclick="location.reload()" class="btn-primary">Jogar Novamente</button>
+          <button onclick="playEndAudio()" class="btn-audio" aria-label="Ouvir mensagem final">🔊 Ouvir Mensagem</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Global Owl Character -->
+    <div id="owl-character" class="owl-character pos-intro">
+      <img src="https://iili.io/qb0OYAX.gif" alt="Coruja Pedagógica" class="owl-avatar" referrerPolicy="no-referrer" />
+      <div class="owl-bubble hidden" id="owl-bubble"></div>
+    </div>
+
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
+
