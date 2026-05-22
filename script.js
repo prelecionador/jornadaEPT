@@ -102,6 +102,8 @@ const questions = [
 
 let currentStage = 0;
 let keysCollected = 0;
+let errorsCount = 0;
+let playerName = "";
 let bubbleTimeout;
 
 const synth = window.speechSynthesis;
@@ -138,6 +140,7 @@ function loadVoices() {
 }
 
 loadVoices();
+
 if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = loadVoices;
 }
@@ -166,9 +169,13 @@ function speak(text) {
     utterance.onend = () => {
         elements.forEach(el => el.classList.remove('talking'));
         clearTimeout(bubbleTimeout);
+
         bubbleTimeout = setTimeout(() => {
             const bubble = document.getElementById('owl-bubble');
-            if (bubble) bubble.classList.add('hidden');
+
+            if (bubble) {
+                bubble.classList.add('hidden');
+            }
         }, 8000);
     };
     
@@ -195,9 +202,11 @@ window.playQuestionAudio = function() {
 window.playOptionsAudio = function() {
     const options = questions[currentStage].options;
     let text = "As opções são: ";
+
     options.forEach((opt) => {
         text += `Opção ${opt.id.toUpperCase()}: ${opt.text}. `;
     });
+
     speak(text);
 };
 
@@ -207,12 +216,23 @@ window.playEndAudio = function() {
 
 window.startGame = function() {
     synth.cancel();
+
+    playerName = document.getElementById("player-name").value.trim();
+
+    if (playerName === "") {
+        alert("Digite seu nome antes de começar.");
+        return;
+    }
+
     document.getElementById('intro-screen').classList.remove('active');
     document.getElementById('intro-screen').classList.add('hidden');
+
     document.getElementById('game-screen').classList.remove('hidden');
     document.getElementById('game-screen').classList.add('active');
+
     document.getElementById('top-bar').classList.remove('hidden');
     document.getElementById('owl-character').className = 'owl-character pos-game';
+
     initKeysVisual();
     loadQuestion();
 };
@@ -220,11 +240,14 @@ window.startGame = function() {
 function initKeysVisual() {
     const container = document.getElementById('keys-visual');
     container.innerHTML = '';
+
     for (let i = 0; i < questions.length; i++) {
         const key = document.createElement('span');
+
         key.className = 'key-icon';
         key.innerText = '🔑';
         key.id = `key-${i}`;
+
         container.appendChild(key);
     }
 }
@@ -236,6 +259,7 @@ function loadQuestion() {
     }
 
     const q = questions[currentStage];
+
     document.getElementById('question-text').innerText = `Fase ${currentStage + 1}: ${q.question}`;
     document.getElementById('explanation-text').innerText = q.explanation;
     
@@ -249,9 +273,11 @@ function loadQuestion() {
 
     q.options.forEach(opt => {
         const btn = document.createElement('button');
+
         btn.className = 'option-btn';
         btn.innerHTML = `<strong>${opt.id.toUpperCase()})</strong>&nbsp; ${opt.text}`;
         btn.onclick = () => window.selectOption(opt, btn);
+
         optionsContainer.appendChild(btn);
     });
 
@@ -272,14 +298,17 @@ window.selectOption = function(option, btnElement) {
     synth.cancel();
     
     const allBtns = document.querySelectorAll('.option-btn');
+
     allBtns.forEach(b => b.disabled = true);
 
     if (option.isCorrect) {
         btnElement.classList.add('correct');
+
         showOwlMessage(option.feedback);
         speak("Correto! " + option.feedback);
         
         document.getElementById(`key-${currentStage}`).classList.add('collected');
+
         keysCollected++;
         document.getElementById('keys-count').innerText = keysCollected;
 
@@ -287,8 +316,12 @@ window.selectOption = function(option, btnElement) {
             currentStage++;
             loadQuestion();
         }, 4500);
+
     } else {
+        errorsCount++;
+
         btnElement.classList.add('wrong');
+
         showOwlMessage(option.feedback);
         speak("Ops! " + option.feedback);
 
@@ -297,6 +330,7 @@ window.selectOption = function(option, btnElement) {
                 b.disabled = false;
                 b.classList.remove('wrong');
             });
+
             showOwlMessage("Tente novamente!");
         }, 8000);
     }
@@ -304,21 +338,46 @@ window.selectOption = function(option, btnElement) {
 
 function showOwlMessage(msg) {
     const bubble = document.getElementById('owl-bubble');
+
     bubble.innerText = msg;
     bubble.classList.remove('hidden');
 
     clearTimeout(bubbleTimeout);
+
     bubbleTimeout = setTimeout(() => {
         bubble.classList.add('hidden');
     }, 6000);
 }
 
+function enviarResultadoParaPlanilha() {
+    const url = "https://script.google.com/macros/s/AKfycbycMhj3yZqpEtv4NOMCWGfYfLhWlvmQAgRAv5u5kAEcOLef0fNQN_EoNx2_fJPOP_Ue6A/exec";
+
+    const dados = new FormData();
+
+    dados.append("nome", playerName);
+    dados.append("chaves", keysCollected);
+    dados.append("totalQuestoes", questions.length);
+    dados.append("erros", errorsCount);
+
+    fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        body: dados
+    });
+}
+
 function endGame() {
+    enviarResultadoParaPlanilha();
+
     document.getElementById('game-screen').classList.remove('active');
     document.getElementById('game-screen').classList.add('hidden');
+
     document.getElementById('end-screen').classList.remove('hidden');
     document.getElementById('end-screen').classList.add('active');
+
     document.getElementById('top-bar').classList.add('hidden');
+
     document.getElementById('owl-character').className = 'owl-character pos-end';
+
     window.playEndAudio();
 }
