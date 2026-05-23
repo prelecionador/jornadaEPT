@@ -50,8 +50,8 @@ const questions = [
             { id: 'a', text: "Integrada.", isCorrect: false, feedback: "Esta é uma forma válida, onde ambos ocorrem de forma unificada na mesma instituição." },
             { id: 'b', text: "Concomitante.", isCorrect: false, feedback: "Forma válida, onde o aluno faz o técnico e o médio ao mesmo tempo." },
             { id: 'c', text: "Subsequente.", isCorrect: false, feedback: "Forma válida, destinada a quem já concluiu o ensino médio." },
-            { id: 'd', text: "Articulada.", isCorrect: false, feedback: "É um termo geral na legislação que engloba as formas integrada e concomitante." },
-            { id: 'e', text: "Excludente.", isCorrect: true, feedback: "Correto! A EPT busca a inclusão, não a exclusão." }
+            { id: 'd', text: "Articulada.", isCorrect: true, feedback: "Correto! A EPT busca a inclusão, não a exclusão." },
+            { id: 'e', text: "Excludente.", isCorrect: false, feedback: "É um termo geral na legislação que engloba as formas integrada e concomitante." }
         ]
     },
     {
