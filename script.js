@@ -105,6 +105,7 @@ let keysCollected = 0;
 let errorsCount = 0;
 let playerName = "";
 let bubbleTimeout;
+let horariosChaves = [];
 
 const synth = window.speechSynthesis;
 let preferredVoice = null;
@@ -310,7 +311,11 @@ window.selectOption = function(option, btnElement) {
         document.getElementById(`key-${currentStage}`).classList.add('collected');
 
         keysCollected++;
-        document.getElementById('keys-count').innerText = keysCollected;
+
+const horaChave = new Date().toLocaleTimeString("pt-BR");
+horariosChaves.push(`Chave ${keysCollected}: ${horaChave}`);
+
+document.getElementById('keys-count').innerText = keysCollected;
 
         setTimeout(() => {
             currentStage++;
@@ -355,7 +360,7 @@ function enviarResultadoParaPlanilha() {
     const dados = new FormData();
 
     dados.append("nome", playerName);
-    dados.append("chaves", keysCollected);
+    dados.append("chaves", horariosChaves.join(" | "));
     dados.append("totalQuestoes", questions.length);
     dados.append("erros", errorsCount);
 
