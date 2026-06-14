@@ -106,6 +106,7 @@ let errorsCount = 0;
 let playerName = "";
 let bubbleTimeout;
 let horariosChaves = [];
+let errosPorQuestao = Array(questions.length).fill(0);  
 
 const synth = window.speechSynthesis;
 let preferredVoice = null;
@@ -324,6 +325,7 @@ document.getElementById('keys-count').innerText = keysCollected;
 
     } else {
         errorsCount++;
+        errosPorQuestao[currentStage]++;
 
         btnElement.classList.add('wrong');
 
@@ -359,9 +361,13 @@ function enviarResultadoParaPlanilha() {
 
     const dados = new FormData();
 
+    const resumoErrosPorQuestao = errosPorQuestao
+        .map((quantidade, index) => `Q${index + 1}: ${quantidade}`)
+        .join(" | ");
+
     dados.append("nome", playerName);
     dados.append("chaves", horariosChaves.join(" | "));
-    dados.append("totalQuestoes", questions.length);
+    dados.append("totalQuestoes", resumoErrosPorQuestao);
     dados.append("erros", errorsCount);
 
     fetch(url, {
